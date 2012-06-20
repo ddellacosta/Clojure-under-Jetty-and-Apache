@@ -2,7 +2,7 @@
 
 This is the simplest example I could come up with for getting a Clojure web app running under Jetty, proxied by Apache.  It's split up into three main sections:
 
-  * [Getting Clojure and Jetty working together via Ring]()
+  * [Getting Clojure and Jetty working together via Ring](#getting-clojure-and-jetty-working-together-via-ring)
   * [Setting up Jetty with Apache HTTPD](https://github.com/ddellacosta/Clojure-under-Jetty-and-Apache#setting-up-jetty-with-apache-httpd)
   * [Extra: getting Jetty running via a init script.](https://github.com/ddellacosta/Clojure-under-Jetty-and-Apache#extra-getting-jetty-running-via-a-init-script)
 
@@ -165,7 +165,7 @@ The Jetty Apache docs include the following lines, but I couldn't get it working
 
 At this point, you should be ready to go.  Make sure Jetty is running, and restart Apache.  Go to your domain, and you should see your "Hello World" again.
 
-## <a name="#head3" />Extra: getting Jetty running via a init script. 
+## Extra: getting Jetty running via a init script. 
 
 If you want to set this up in a more permanent way, you will probably prefer to use a script to start up and shut down Jetty, like how most services running on Linux work. In my case, I'm using the Gentoo distribution, so I wanted something nice in my /etc/init.d folder to start and stop, and to configure as a default service, just like how Apache is set up (*TODO: configure for Gentoo rc-update so I can have this loaded by default*).  Please note that your *nix may be set up quite different (in particular, where the startup scripts are located).  However, the steps will probably be pretty similar.
 
