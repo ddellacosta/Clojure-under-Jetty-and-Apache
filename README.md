@@ -171,7 +171,7 @@ At this point, you should be ready to go.  Make sure Jetty is running, and resta
 
 If you want to set this up in a more permanent way, you will probably prefer to use a script to start up and shut down Jetty, like how most services running on Linux work. In my case, I'm using the Gentoo distribution, so I wanted something nice in my /etc/init.d folder to start and stop, and to configure as a default service, just like how Apache is set up (*TODO: configure for Gentoo rc-update so I can have this loaded by default*).  Please note that your *nix may be set up quite different (in particular, where the startup scripts are located).  However, the steps will probably be pretty similar.
 
-Now, for whatever reason Jetty isn't available as a package within Gentoo's emerge package management system on my server.  Luckily the Jetty package comes with some nice scripts available in the bin/ directory (which unfortunately aren't conformant to Gentoo's format...see my TODO).  I copied the one for *nix systems to my /etc/init.d directory:
+Now, for whatever reason Jetty isn't available as a package within Gentoo's emerge package management system on my server.  Luckily the Jetty package comes with some nice scripts available in the bin/ directory (which unfortunately aren't conformant with Gentoo's format...see my TODO).  I copied the one for *nix systems to my /etc/init.d directory:
 
 ``` shell
 # from the root of the Jetty install directory
