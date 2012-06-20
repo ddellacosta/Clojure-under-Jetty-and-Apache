@@ -2,9 +2,9 @@
 
 This is the simplest example I could come up with for getting a Clojure web app running under Jetty, proxied by Apache.  It's split up into three main sections:
 
-  * [Getting Clojure and Jetty working together via Ring][]
-  * [Setting up Jetty with Apache HTTPD][]
-  * [Extra: getting Jetty running via a init script.][]
+  * [Getting Clojure and Jetty working together via Ring](https://github.com/ddellacosta/Clojure-under-Jetty-and-Apache#head1)
+  * [Setting up Jetty with Apache HTTPD](https://github.com/ddellacosta/Clojure-under-Jetty-and-Apache#head2)
+  * [Extra: getting Jetty running via a init script.](https://github.com/ddellacosta/Clojure-under-Jetty-and-Apache#head3)
 
 I've tested this on my slicehost Gentoo Linux setup. It's been a good number of years since I've done much of anything in the Java world, so I will warn you that I may be neglecting configuration relating to optimization or security with regards to my Jetty setup.  Accordingly, please do contact me or fork this and send a [pull request](https://help.github.com/articles/using-pull-requests) if you want to add something as far as setting up Jetty or the Java/Clojure environment the "right" way (for example, I have no idea if it would be best to package Clojure or other jars with Jetty globally, or using the uberwar as I'm doing in this tutorial).  I'm very much open to and interested in improving this guide.
 
@@ -20,7 +20,7 @@ The software versions I'm using:
   * Ring (https://github.com/ring-clojure/ring): 1.1.1
   * Apache HTTP Server (http://httpd.apache.org/): 2.2.22
 
-## Getting Clojure and Jetty working together via Ring
+## <a name="#head1" />Getting Clojure and Jetty working together via Ring
 
 First of all, this tutorial assumes you've got your Java environment set up and working.
 
@@ -127,7 +127,7 @@ It's a bit verbose, but we're going to put it all behind an Apache proxy in a bi
 
 Everything beyond this point is Apache and Linux configuration.  If getting a Clojure app running on Jetty is all you were after, you can stop here.
 
-## Setting up Jetty with Apache HTTPD
+## <a name="#head2" />Setting up Jetty with Apache HTTPD
 
 We want our Clojure app to be there when you go to our domain. So we'll set up Apache as a proxy for our Jetty web app.
 
@@ -165,7 +165,7 @@ The Jetty Apache docs include the following lines, but I couldn't get it working
 
 At this point, you should be ready to go.  Make sure Jetty is running, and restart Apache.  Go to your domain, and you should see your "Hello World" again.
 
-## Extra: getting Jetty running via a init script. 
+## <a name="#head3" />Extra: getting Jetty running via a init script. 
 
 If you want to set this up in a more permanent way, you will probably prefer to use a script to start up and shut down Jetty, like how most services running on Linux work. In my case, I'm using the Gentoo distribution, so I wanted something nice in my /etc/init.d folder to start and stop, and to configure as a default service, just like how Apache is set up (*TODO: configure for Gentoo rc-update so I can have this loaded by default*).  Please note that your *nix may be set up quite different (in particular, where the startup scripts are located).  However, the steps will probably be pretty similar.
 
