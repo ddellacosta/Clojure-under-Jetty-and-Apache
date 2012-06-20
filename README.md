@@ -1,6 +1,8 @@
 # A basic Clojure web app using Jetty behind Apache
 
-This is the simplest example I could come up with for getting a Clojure web app running under Jetty, proxied by Apache.  It's split up into three main sections:
+This is the simplest example I could come up with for getting a Clojure web app running under Jetty, proxied by Apache. I've described [my rationale and linked to some other approaches I've found online below](#rationale-and-other-approaches).
+
+The setup itself is split up into three main sections:
 
   * [Getting Clojure and Jetty working together via Ring](#getting-clojure-and-jetty-working-together-via-ring)
   * [Setting up Jetty with Apache HTTPD](#setting-up-jetty-with-apache-httpd)
@@ -196,6 +198,31 @@ $ /etc/init.d/jetty.sh start
   * http://www.enavigo.com/2008/08/29/deploying-a-web-application-to-jetty/
   * http://wiki.eclipse.org/Jetty/Tutorial/Apache
   * http://ubuntuforums.org/showthread.php?t=1434872 (this saved me after half an our of stumbling around; I didn't realize I needed mod_proxy_http!)
+
+## Rationale and Other Approaches
+
+When I started trying to set up a Clojure web app, this is how I was thinking:
+
+  1. I wanted to use the Slicehost instance I was already paying for.
+  2. I wanted to use all open-source software; among other things, I'm cheap, but I also believe in OSS, as I've built a career on it.
+  3. I wanted to be able to write scripts to deploy and manage processes easily, using techniques I was already familiar with on Linux.
+  4. I was thinking it may be nice to be able to deploy other JVM languages which can be packaged as .war files to Jetty (Scala, Kotlin, etc.)
+
+I won't pretend I'm building enterprise software here--I'm trying to learn how to build Clojure web apps--but I wanted something stable and robust.
+
+However, many approaches to deploying Clojure web apps I've seen assume the use of a constantly running REPL.  One goes so far as to incorporate [a constantly running instance of Emacs in screen] (http://briancarper.net/blog/510/deploying-clojure-websites). These mostly seem to use the [ring-jetty-adapter](https://github.com/ring-clojure/ring/tree/master/ring-jetty-adapter) library.  But I was looking for something that was integrated as a service on Linux.  I haven't seen a way of doing this easily with a long-running REPL, and I don't feel like this is the purpose of the REPL (I can hear you now..."you dirty prescriptivist!").
+
+Other approaches I found which were closer to what I was looking for include:
+
+  * [Developing and Deploying a Simple Clojure Web Application](http://mmcgrana.github.com/2010/07/develop-deploy-clojure-web-applications.html) From the author of Ring, Mark McGranaghan, this approach involves setting up a web app as a service on Amazon's EC2.
+  * [Clojure Applications as Daemons](http://techwhizbang.com/2012/02/clojure-applications-as-daemons/). I found this too late, and I didn't feel like using something with a commercial license (well, the GPL is available too, if you want to be nitpicky).  But I like this solution a lot.  Maybe I'll try it later.
+  * [Getting Started with Clojure on Heroku/Cedar] (https://devcenter.heroku.com/articles/clojure) I've tested this out, it works beautifully...but did I mention I'm already paying for a slice at Slicehost?
+  * [How We Deploy Our Clojure Services](http://asymmetrical-view.com/2010/08/26/how-were-deploying-our-clojure-applications.html) This is intended for a real production environment, and probably the closest to what I was looking to set up.
+  * All the ones I missed (send 'em to me).
+
+So, the above represents the simplest thing I could come up with with the resources at hand, which also meets my expectations.
+
+Comments welcome.
 
 ## TODO:
 
